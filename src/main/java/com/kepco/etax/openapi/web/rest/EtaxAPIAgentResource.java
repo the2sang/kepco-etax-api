@@ -31,10 +31,10 @@ public class EtaxAPIAgentResource {
     @CrossOrigin(origins = "*", allowedHeaders = "*")
     @RequestMapping("/nts-businessman/v1/status")
     @ResponseBody
-    public String etaxSaupStatusAPI(@RequestParam String data, @RequestParam("returnType") String returnType) {
+    public String etaxSaupStatusAPI(@RequestBody String data, @RequestParam("returnType") String returnType) {
         String requestData = data;
 
-        String serviceURL = this.ETAX_STATUS_API_URL + "?serviceKey=" + this.API_ENCODING_KEY + "&returntype=" + returnType;
+        String serviceURL = this.ETAX_STATUS_API_URL + "?serviceKey=" + this.API_ENCODING_KEY + "&returnType=" + returnType;
 
         String returnValue = postAPI(serviceURL, requestData);
 
@@ -44,10 +44,10 @@ public class EtaxAPIAgentResource {
     @CrossOrigin(origins = "*", allowedHeaders = "*")
     @RequestMapping("/nts-businessman/v1/validate")
     @ResponseBody
-    public String etaxSaupValidateAPI(@RequestParam String data, @RequestParam("returnType") String returnType) {
+    public String etaxSaupValidateAPI(@RequestBody String data, @RequestParam("returnType") String returnType) {
         String requestData = data;
 
-        String serviceURL = this.ETAX_VALIDATE_API_URL + "?serviceKey=" + this.API_ENCODING_KEY + "&returntype=" + returnType;
+        String serviceURL = this.ETAX_VALIDATE_API_URL + "?serviceKey=" + this.API_ENCODING_KEY + "&returnType=" + returnType;
 
         String returnValue = postAPI(serviceURL, requestData);
 
@@ -89,11 +89,10 @@ public class EtaxAPIAgentResource {
             wr.flush();
 
             if (con.getResponseCode() == HttpURLConnection.HTTP_OK) {
-                //Stream을 처리해줘야 하는 귀찮음이 있음.
                 BufferedReader br = new BufferedReader(new InputStreamReader(con.getInputStream(), "utf-8"));
                 String line;
                 while ((line = br.readLine()) != null) {
-                    sb.append(line).append("\n");
+                    sb.append(line);
                 }
                 br.close();
                 System.out.println("" + sb.toString());
