@@ -20,13 +20,22 @@ public class EtaxAPIAgentResource {
     private String applicationName;
 
     private final String ETAX_STATUS_API_URL = "https://api.odcloud.kr/api/nts-businessman/v1/status";
+    //private final String ETAX_STATUS_API_URL = "http://175.106.80.117/api/nts-businessman/v1/status";
 
     private final String ETAX_VALIDATE_API_URL = "https://api.odcloud.kr/api/nts-businessman/v1/validate";
 
-    private final String API_ENCODING_KEY =
-        "Hp%2FQS2VGiw1J%2FmoPr2LV6%2Bvs0%2Fm1tiDZbP5BtqtsdRBjXEFbEouNh2nDVVfIDF0UX2mZLLQEsHglWVVbpMqG8A%3D%3D";
+    //private final String ETAX_VALIDATE_API_URL = "http://175.106.80.117/api/nts-businessman/v1/validate";
 
-    private final String API_DECODING_KEY = "Hp/QS2VGiw1J/moPr2LV6+vs0/m1tiDZbP5BtqtsdRBjXEFbEouNh2nDVVfIDF0UX2mZLLQEsHglWVVbpMqG8A==";
+    //private final String API_ENCODING_KEY =
+    //    "Hp%2FQS2VGiw1J%2FmoPr2LV6%2Bvs0%2Fm1tiDZbP5BtqtsdRBjXEFbEouNh2nDVVfIDF0UX2mZLLQEsHglWVVbpMqG8A%3D%3D";
+
+    //private final String API_DECODING_KEY = "Hp/QS2VGiw1J/moPr2LV6+vs0/m1tiDZbP5BtqtsdRBjXEFbEouNh2nDVVfIDF0UX2mZLLQEsHglWVVbpMqG8A==";
+
+    @Value("${etax.open-api.encoding-key}")
+    private String API_ENCODING_KEY;
+
+    @Value("${etax.open-api.decoding-key}")
+    private String API_DECODING_EKY;
 
     @CrossOrigin(origins = "*", allowedHeaders = "*")
     @RequestMapping("/nts-businessman/v1/status")
