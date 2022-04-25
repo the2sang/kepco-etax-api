@@ -214,6 +214,9 @@ dependencies {
     developmentOnly "org.springframework.boot:spring-boot-devtools:${springBootVersion}"
     //jhipster-needle-gradle-dependency - JHipster will add additional dependencies here
     implementation group: 'com.googlecode.json-simple', name: 'json-simple', version: '1.1'
+
+    // log4j 보안 이슈로 인한 패치 : 2022년 03월 29일 적용 2.17.1 -> 2.17.2 업데이트
+    implementation(platform("org.apache.logging.log4j:log4j-bom:2.17.2"))
 }
 
 if (project.hasProperty("gae")) {
